@@ -9,10 +9,14 @@ cf_client.create_stack(StackName='myec2wSSH', TemplateBody=cf_template)
 
 # Creates two users with EC2 full access and creates an AWS CLI access key for each user.
 iam = boto3.client('iam')
-user1 = iam.create_user(UserName='user1',
-				PermissionsBoundary='arn:aws:iam::aws:policy/AmazonEC2FullAccess')
-user2 = iam.create_user(UserName='user2',
-				PermissionsBoundary='arn:aws:iam::aws:policy/AmazonEC2FullAccess')
+user1 = iam.create_user(
+	UserName='user1',
+	PermissionsBoundary='arn:aws:iam::aws:policy/AmazonEC2FullAccess'
+)
+user2 = iam.create_user(
+	UserName='user2',
+	PermissionsBoundary='arn:aws:iam::aws:policy/AmazonEC2FullAccess'
+)
 ak1 = iam.create_access_key(UserName='user1')
 ak2 = iam.create_access_key(UserName='user2')
 
